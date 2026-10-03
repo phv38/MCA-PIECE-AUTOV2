@@ -429,18 +429,23 @@ async function saveOrder({ userId, total, statut = 'En attente' }) {
 async function triggerOrderEmails(orderId) {
   if (!orderId || !window.supabaseClient?.functions?.invoke) return null;
 
-  console.log('[emails] send-order-email called', { orderId });
-  const { data, error } = await window.supabaseClient.functions.invoke('send-order-email', {
-    body: { orderId }
+  const payload = { orderId };
+
+  console.log('[EMAIL] before invoke');
+  console.log('[EMAIL] payload', payload);
+
+  const response = await window.supabaseClient.functions.invoke('send-order-emails', {
+    body: payload
   });
 
-  console.log('[emails] send-order-email response', { data, error });
+  console.log('[EMAIL] response', response.data);
+  console.log('[EMAIL] error', response.error);
 
-  if (error) {
-    throw normalizeOrderError(error);
+  if (response.error) {
+    throw normalizeOrderError(response.error);
   }
 
-  return data;
+  return response.data;
 }
 
 async function submitOrder(cartItems = [], userId = null) {
