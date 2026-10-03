@@ -150,6 +150,16 @@ function echapperHtml(valeur) {
   })[character]);
 }
 
+function normalizeOrderError(error) {
+  const message = String(error?.message || '');
+
+  if (message.includes('Could not find the function public.decrement_stock(product_id, quantity) in the schema cache')) {
+    return new Error('La fonction SQL public.decrement_stock(product_id, quantity) est absente du cache Supabase. Exécutez le script projet/supabase/admin_setup.sql dans Supabase puis rechargez le cache PostgREST.');
+  }
+
+  return error instanceof Error ? error : new Error(message || 'erreur inconnue');
+}
+
 function renderPanier() {
   const panier = getPanier();
   const cartList = document.getElementById('cartList');
@@ -274,7 +284,7 @@ async function validateCartStock(cartItems = []) {
     });
 
     if (error) {
-      throw error;
+      throw normalizeOrderError(error);
     }
 
     if (!product) {
@@ -323,50 +333,58 @@ async function decrementProductStockFromCart(cartItems = []) {
 
     if (!productId || quantity <= 0) continue;
 
-    const { data: currentProduct, error: currentError } = await window.supabaseClient
-      .from('produits')
-      .select('id, nom, stock, stock_min')
-      .eq('id', productId)
-      .maybeSingle();
+    const rpcPayload = {
+      product_id: productId,
+      quantity
+    };
 
-    console.log('[orders] decrementProductStock current', {
-      productId,
-      quantity,
-      currentProduct,
-      currentError
+    console.log('[RPC] decrement_stock called');
+    console.log('[RPC] payload', rpcPayload);
+
+    const { data, error } = await window.supabaseClient.rpc('decrement_stock', rpcPayload);
+
+    const rpcResult = Array.isArray(data) ? data[0] : data;
+
+    console.log('[RPC] result', data);
+    console.log('[RPC] error', error);
+
+    console.log('[orders] decrementProductStock update result', {
+      produitConcerne: {
+        id: productId,
+        nom: rpcResult?.nom || item.nom || item.name || null
+      },
+      stockAvant: rpcResult?.stock_avant ?? null,
+      stockApres: rpcResult?.stock_apres ?? null,
+      resultatUpdateSupabase: data,
+      erreurComplete: error
+        ? {
+            message: error.message,
+            details: error.details,
+            hint: error.hint,
+            code: error.code,
+            fullError: error
+          }
+        : null
     });
 
-    if (currentError) {
-      throw currentError;
+    if (!error && !rpcResult) {
+      console.warn('[orders] decrementProductStock possible RLS block on produits update', {
+        produitConcerne: {
+          id: productId,
+          nom: item.nom || item.name || null
+        },
+        resultatUpdateSupabase: data,
+        erreurComplete: error,
+        diagnostic: 'Aucune ligne retournée par la RPC decrement_stock. Vérifiez les droits EXECUTE et la fonction SQL.'
+      });
     }
-
-    if (!currentProduct) {
-      throw new Error(`Produit #${productId} introuvable pour décrémenter le stock.`);
-    }
-
-    const nextStock = Number(currentProduct.stock ?? 0) - quantity;
-    const payload = { stock: Math.max(0, nextStock) };
-
-    console.log('[orders] decrementProductStock before update', {
-      table: 'produits',
-      productId,
-      productName: currentProduct.nom,
-      previousStock: Number(currentProduct.stock ?? 0),
-      quantity,
-      nextStock,
-      payload
-    });
-
-    const { data, error } = await window.supabaseClient
-      .from('produits')
-      .update(payload)
-      .eq('id', productId)
-      .select('id, nom, stock, stock_min');
-
-    console.log('[orders] decrementProductStock after update', { data, error, payload });
 
     if (error) {
       throw error;
+    }
+
+    if (!rpcResult) {
+      throw new Error(`La décrémentation du stock n'a retourné aucun résultat pour le produit #${productId}.`);
     }
   }
 }
@@ -482,8 +500,9 @@ async function checkout() {
     window.location.href = `confirmation.html?order_id=${encodeURIComponent(result.order.id)}`;
     return result;
   } catch (error) {
-    console.error('[orders] checkout failed', error);
-    window.alert(`La commande n’a pas pu être enregistrée : ${error.message || 'erreur inconnue'}`);
+    const normalizedError = normalizeOrderError(error);
+    console.error('[orders] checkout failed', normalizedError);
+    window.alert(`La commande n’a pas pu être enregistrée : ${normalizedError.message || 'erreur inconnue'}`);
     return null;
   }
 }
@@ -575,8 +594,9 @@ async function validateOrder(cartItems = [], userId = null) {
     window.location.href = `confirmation.html?order_id=${encodeURIComponent(commande.id)}`;
     return { order: commande, items: details };
   } catch (error) {
-    console.error('[orders] validation failed', error);
-    window.alert(`La commande n’a pas pu être enregistrée : ${error.message || 'erreur inconnue'}`);
+    const normalizedError = normalizeOrderError(error);
+    console.error('[orders] validation failed', normalizedError);
+    window.alert(`La commande n’a pas pu être enregistrée : ${normalizedError.message || 'erreur inconnue'}`);
     return null;
   }
 }

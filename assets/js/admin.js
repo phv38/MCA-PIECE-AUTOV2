@@ -1,4 +1,4 @@
-const ADMIN_PRODUCTS_TABLE = 'produits';
+﻿const ADMIN_PRODUCTS_TABLE = 'produits';
 const ADMIN_PROFILES_TABLE = 'profils';
 const PRODUCT_IMAGES_BUCKET = 'produits';
 const ADMIN_ORDER_STATUSES = ['En attente', 'Préparation', 'Expédiée', 'Terminée', 'Annulée'];
@@ -122,6 +122,18 @@ function setAdminMessage(message, isError = false) {
   node.textContent = message;
   node.classList.toggle('text-danger', isError);
   node.classList.toggle('text-muted', !isError);
+}
+
+function refuseAdminAccess(reason = 'Accès réservé aux administrateurs') {
+  setAdminMessage(reason, true);
+
+  const adminContent = document.getElementById('admin-content');
+  const adminLoginPanel = document.getElementById('admin-login-panel');
+
+  if (adminContent) adminContent.hidden = true;
+  if (adminLoginPanel) adminLoginPanel.hidden = true;
+
+  return false;
 }
 
 function setDashboardValue(id, value) {
@@ -925,12 +937,24 @@ async function initAdminPage() {
 
   if (!data?.user) {
     showAdminLogin();
-    setAdminMessage('Connectez-vous avec le compte administrateur.');
+    setAdminMessage('Accès réservé aux administrateurs', true);
     return;
   }
 
-  await openAdminDashboard(data.user);
+  const access = await checkAdminAccess(data.user);
+  if (!access.allowed) {
+    activeAdminUser = null;
+    refuseAdminAccess(access.blockingCondition || 'Accès réservé aux administrateurs');
+    return;
+  }
+
+  await openAdminDashboard(data.user, access);
   await loadAdminOrders();
 }
 
 window.addEventListener('DOMContentLoaded', initAdminPage);
+
+
+
+
+
