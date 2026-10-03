@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panier | MCA Pièces Autos 38</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-inner">
+          <div class="contact-inline">
+            <span><i class="fa-solid fa-location-dot"></i> 372 Route du Barrage, 38121 Reventin-Vaugris</span>
+            <a href="tel:0451263555"><i class="fa-solid fa-phone"></i> 04 51 26 35 55</a>
+          </div>
+          <a href="https://www.facebook.com/people/MCA-Pi%C3%A8ces-autos-38/61590594564090/" target="_blank" rel="noopener">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><span class="brand-mark"><i class="fa-solid fa-car-side"></i></span><span>MCA PIÈCES AUTOS 38</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link" href="catalogue.html">Catalogue</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="galerie.html">Galerie</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item"><a class="nav-link active" href="panier.html">Panier</a></li>
+            <li class="nav-item"><a class="nav-link" href="connexion.html">Connexion</a></li>
+          </ul>
+          <div class="navbar-actions">
+            <a href="panier.html" class="cart-pill"><i class="fa-solid fa-bag-shopping"></i> Panier <span class="badge rounded-pill bg-danger" data-cart-count hidden>0</span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="container page-header-content">
+        <span class="badge badge-light">Panier</span>
+        <h1>Votre sélection</h1>
+        <p>Vérifiez les articles, ajustez les quantités et finalisez votre commande.</p>
+      </div>
+    </header>
+
+    <main class="section" style="background: var(--light);">
+      <div class="container">
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-8">
+            <div class="cart-card" style="padding: 1.5rem;">
+              <div class="cart-header">
+                <h3>Articles</h3>
+                <div style="display:flex; align-items:center; gap:0.8rem;">
+                  <span id="cartCountBadge" class="badge badge-primary">0 article</span>
+                  <button id="emptyCartBtn" type="button" class="btn btn-light" style="min-height: 36px; padding: 0.6rem 0.9rem; font-size: 0.8rem;">Vider le panier</button>
+                </div>
+              </div>
+              <div id="cartList" class="cart-items"></div>
+            </div>
+          </div>
+
+        <aside class="col-lg-4">
+          <div class="cart-card" style="padding: 1.5rem;">
+              <h3>Résumé</h3>
+              <div class="summary-row"><span>Sous-total</span><strong id="subtotalValue">0,00 €</strong></div>
+              <div class="summary-row"><span>Livraison</span><strong id="shippingValue">0,00 €</strong></div>
+              <div class="summary-row total"><span>Total</span><strong id="totalValue">0,00 €</strong></div>
+              <button id="validate-order-button" class="btn btn-primary" style="width:100%; margin-top:1rem;" type="button">Valider ma commande</button>
+          </div>
+        </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid"><div><div class="footer-brand"><span class="footer-logo"><i class="fa-solid fa-car-side"></i></span><span style="font-weight:800;">MCA PIÈCES AUTOS 38</span></div><p>Votre spécialiste de la pièce automobile pour particuliers et professionnels.</p><div class="social-links"><a href="https://www.facebook.com/people/MCA-Pi%C3%A8ces-autos-38/61590594564090/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="tel:0451263555"><i class="fa-solid fa-phone"></i></a></div></div><div><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="catalogue.html">Catalogue</a></li><li><a href="services.html">Services</a></li><li><a href="galerie.html">Galerie</a></li></ul></div><div><h4>Services</h4><ul><li>Recherche pièces</li><li>Conseils techniques</li><li>Livraison rapide</li><li>Click & Collect</li></ul></div><div><h4>Contact</h4><ul><li>372 Route du Barrage</li><li>38121 Reventin-Vaugris</li><li>04 51 26 35 55</li><li>contact@mcapiecesautos38.fr</li></ul></div></div>
+      <div class="copyright">© <span id="year"></span> MCA Pièces Autos 38 — Tous droits réservés.</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-config.js"></script>
+    <script src="assets/js/supabase.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/panier.js"></script>
+    <script src="assets/js/auth-nav.js"></script>
+  </body>
+</html>

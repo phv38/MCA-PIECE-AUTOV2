@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galerie | MCA Pièces Autos 38</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .gallery-card { position: relative; min-height: 260px; overflow: hidden; }
+      .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+      .gallery-card:hover img { transform: scale(1.08); }
+      .gallery-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,17,17,0), rgba(17,17,17,.55)); }
+      .gallery-caption { position: absolute; left: 1.2rem; bottom: 1.1rem; z-index: 1; color: var(--white); font-weight: 700; }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-inner">
+          <div class="contact-inline">
+            <span><i class="fa-solid fa-location-dot"></i> 372 Route du Barrage, 38121 Reventin-Vaugris</span>
+            <a href="tel:0451263555"><i class="fa-solid fa-phone"></i> 04 51 26 35 55</a>
+          </div>
+          <div class="topbar-meta"><a href="https://www.facebook.com/people/MCA-Pi%C3%A8ces-autos-38/61590594564090/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i> Facebook</a></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="container navbar-inner">
+        <a class="navbar-brand" href="index.html"><span class="brand-mark"><i class="fa-solid fa-car-side"></i></span><span>MCA PIÈCES AUTOS 38</span></a>
+        <ul class="navbar-nav">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="galerie.html" class="active">Galerie</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="panier.html">Panier</a></li>
+          <li><a href="connexion.html">Connexion</a></li>
+        </ul>
+        <div class="navbar-actions"><a href="panier.html" class="cart-pill"><i class="fa-solid fa-bag-shopping"></i> Panier</a></div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="container page-header-content">
+        <span class="badge badge-light">Galerie</span>
+        <h1>Notre univers automobile</h1>
+        <p>Un aperçu de notre magasin, de nos pièces, de l’atelier et du stockage.</p>
+      </div>
+    </header>
+
+    <main class="section">
+      <div class="container">
+        <div class="gallery-grid">
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=900&q=80" alt="Magasin" /><div class="gallery-caption">Magasin</div></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1593941707882-a5bac6861d75?auto=format&fit=crop&w=900&q=80" alt="Pièces automobiles" /><div class="gallery-caption">Pièces</div></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=80" alt="Atelier" /><div class="gallery-caption">Atelier</div></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=900&q=80" alt="Stock" /><div class="gallery-caption">Stock</div></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1605559424843-9e4c179367c5?auto=format&fit=crop&w=900&q=80" alt="Logistique" /><div class="gallery-caption">Logistique</div></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=900&q=80" alt="Comptoir" /><div class="gallery-caption">Comptoir</div></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="footer-brand"><span class="footer-logo"><i class="fa-solid fa-car-side"></i></span><span style="font-weight:800;">MCA PIÈCES AUTOS 38</span></div>
+          <p>Votre spécialiste de la pièce automobile pour particuliers et professionnels.</p>
+          <div class="social-links"><a href="https://www.facebook.com/people/MCA-Pi%C3%A8ces-autos-38/61590594564090/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="tel:0451263555"><i class="fa-solid fa-phone"></i></a></div>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul><li><a href="index.html">Accueil</a></li><li><a href="catalogue.html">Catalogue</a></li><li><a href="services.html">Services</a></li><li><a href="galerie.html">Galerie</a></li></ul>
+        </div>
+        <div><h4>Services</h4><ul><li>Recherche de pièces</li><li>Conseils techniques</li><li>Commande rapide</li><li>Click & Collect</li></ul></div>
+        <div><h4>Contact</h4><ul><li>372 Route du Barrage</li><li>38121 Reventin-Vaugris</li><li>04 51 26 35 55</li><li>contact@mcapiecesautos38.fr</li></ul></div>
+      </div>
+      <div class="copyright">© <span id="year"></span> MCA Pièces Autos 38 — Tous droits réservés.</div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-config.js"></script>
+    <script src="assets/js/supabase.js"></script>
+    <script src="assets/js/auth-nav.js"></script>
+  </body>
+</html>

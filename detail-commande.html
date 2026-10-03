@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Détail commande | MCA Pièces Autos 38</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body data-page="order-detail">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div class="contact-inline"><span><i class="fa-solid fa-location-dot"></i> 372 Route du Barrage, 38121 Reventin-Vaugris</span><a href="tel:0451263555"><i class="fa-solid fa-phone"></i> 04 51 26 35 55</a></div>
+        <div class="topbar-meta"><a href="https://www.facebook.com/people/MCA-Pi%C3%A8ces-autos-38/61590594564090/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i> Facebook</a></div>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="container navbar-inner">
+        <a class="navbar-brand" href="index.html"><span class="brand-mark"><i class="fa-solid fa-car-side"></i></span><span>MCA PIÈCES AUTOS 38</span></a>
+        <ul class="navbar-nav">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="panier.html">Panier</a></li>
+          <li><a href="compte.html" class="active">Compte</a></li>
+        </ul>
+        <div class="navbar-actions">
+          <button class="btn btn-light" data-auth-action="logout" type="button">Déconnexion</button>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="container page-header-content">
+        <span class="badge badge-light">Mes commandes</span>
+        <h1>Détail de la commande</h1>
+        <p>Consultez les produits, le montant et le statut de votre commande.</p>
+      </div>
+    </header>
+
+    <main class="section" style="background: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);">
+      <div class="container">
+        <div id="order-detail-content"></div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="footer-brand"><span class="footer-logo"><i class="fa-solid fa-car-side"></i></span><span style="font-weight:800;">MCA PIÈCES AUTOS 38</span></div>
+          <p>Votre spécialiste de la pièce automobile pour particuliers et professionnels.</p>
+          <div class="social-links"><a href="https://www.facebook.com/people/MCA-Pi%C3%A8ces-autos-38/61590594564090/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="tel:0451263555"><i class="fa-solid fa-phone"></i></a></div>
+        </div>
+        <div><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="catalogue.html">Catalogue</a></li><li><a href="services.html">Services</a></li><li><a href="galerie.html">Galerie</a></li></ul></div>
+        <div><h4>Services</h4><ul><li>Recherche pièces</li><li>Conseils techniques</li><li>Livraison rapide</li><li>Click & Collect</li></ul></div>
+        <div><h4>Contact</h4><ul><li>372 Route du Barrage</li><li>38121 Reventin-Vaugris</li><li>04 51 26 35 55</li><li>contact@mcapiecesautos38.fr</li></ul></div>
+      </div>
+      <div class="copyright">© <span id="year"></span> MCA Pièces Autos 38 — Tous droits réservés.</div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-config.js"></script>
+    <script src="assets/js/supabase.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/auth-nav.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', async () => {
+        const yearNode = document.getElementById('year');
+        if (yearNode) yearNode.textContent = new Date().getFullYear();
+        await renderOrderDetailPage();
+      });
+    </script>
+  </body>
+</html>

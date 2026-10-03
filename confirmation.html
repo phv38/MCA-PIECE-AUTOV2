@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirmation commande | MCA Pièces Autos 38</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div class="contact-inline">
+          <span><i class="fa-solid fa-location-dot"></i> 372 Route du Barrage, 38121 Reventin-Vaugris</span>
+          <a href="tel:0451263555"><i class="fa-solid fa-phone"></i> 04 51 26 35 55</a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><span class="brand-mark"><i class="fa-solid fa-car-side"></i></span><span>MCA PIÈCES AUTOS 38</span></a>
+      </div>
+    </nav>
+
+    <main class="section" style="background: var(--light); min-height: 60vh;">
+      <div class="container py-5">
+        <div class="card mx-auto" style="max-width: 720px;">
+          <div class="card-body p-5 text-center">
+            <div class="mb-3 text-success">
+              <i class="fa-solid fa-circle-check fa-3x"></i>
+            </div>
+            <h1 class="h3 mb-3">Commande enregistrée</h1>
+            <p class="text-muted mb-4">Votre commande a bien été prise en compte. Nous vous contacterons prochainement pour la confirmation et le suivi.</p>
+            <p class="mb-4">
+              <strong>Référence :</strong> <span id="confirmation-order-id">—</span>
+            </p>
+            <a href="index.html" class="btn btn-primary">Retour à l'accueil</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const orderId = params.get('order_id');
+      const node = document.getElementById('confirmation-order-id');
+      if (node) {
+        node.textContent = orderId || 'Non disponible';
+      }
+    </script>
+  </body>
+</html>

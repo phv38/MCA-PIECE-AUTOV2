@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administration | MCA Pièces Autos 38</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body data-page="admin">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div class="contact-inline">
+          <span><i class="fa-solid fa-location-dot"></i> 372 Route du Barrage, 38121 Reventin-Vaugris</span>
+          <a href="tel:0451263555"><i class="fa-solid fa-phone"></i> 04 51 26 35 55</a>
+        </div>
+        <div class="topbar-meta">
+          <a href="https://www.facebook.com/people/MCA-Pi%C3%A8ces-autos-38/61590594564090/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="container navbar-inner">
+        <a class="navbar-brand" href="index.html"><span class="brand-mark"><i class="fa-solid fa-car-side"></i></span><span>MCA PIÈCES AUTOS 38</span></a>
+        <ul class="navbar-nav">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="catalogue.html">Catalogue</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="galerie.html">Galerie</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="connexion.html">Connexion</a></li>
+          <li><a href="admin.html" class="active">Admin</a></li>
+        </ul>
+        <div class="navbar-actions"><a href="panier.html" class="cart-pill"><i class="fa-solid fa-bag-shopping"></i> Panier</a></div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="container page-header-content">
+        <span class="badge badge-light">Administration</span>
+        <h1>Tableau de bord</h1>
+        <p>Suivi du catalogue, des commandes et des performances du magasin.</p>
+      </div>
+    </header>
+
+    <main class="section" style="background: var(--light);">
+      <div class="container">
+        <p id="admin-auth-message" class="text-muted" aria-live="polite">Vérification de votre accès administrateur…</p>
+
+        <section id="admin-login-panel" class="admin-card p-4 mx-auto" style="max-width: 480px;" hidden>
+          <h2 class="h4 mb-3">Connexion administrateur</h2>
+          <form id="admin-login-form" class="d-grid gap-3">
+            <div>
+              <label for="admin-email" class="form-label">Email</label>
+              <input id="admin-email" class="form-control" type="email" name="email" autocomplete="username" required />
+            </div>
+            <div>
+              <label for="admin-password" class="form-label">Mot de passe</label>
+              <input id="admin-password" class="form-control" type="password" name="password" autocomplete="current-password" required />
+            </div>
+            <button class="btn btn-primary" type="submit">Se connecter</button>
+          </form>
+        </section>
+
+        <section id="admin-content" hidden>
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+            <div>
+              <h2 class="h3 mb-1">Gestion du catalogue</h2>
+              <p id="admin-user-label" class="text-muted mb-0"></p>
+            </div>
+            <button id="admin-logout" class="btn btn-outline-dark" type="button"><i class="fa-solid fa-right-from-bracket me-2"></i>Déconnexion</button>
+          </div>
+
+          <div class="row g-3 mb-4">
+            <div class="col-sm-4"><div class="admin-card p-3 h-100"><div class="text-muted">Produits</div><strong id="admin-product-count" class="metric">—</strong></div></div>
+            <div class="col-sm-4"><div class="admin-card p-3 h-100"><div class="text-muted">Unités en stock</div><strong id="admin-stock-count" class="metric">—</strong></div></div>
+            <div class="col-sm-4"><div class="admin-card p-3 h-100"><div class="text-muted">Stocks faibles</div><strong id="admin-low-stock-count" class="metric">—</strong></div></div>
+          </div>
+
+          <div class="admin-card p-4 mb-4">
+            <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
+              <h3 id="product-form-title" class="h5 mb-0">Ajouter un produit</h3>
+              <button id="cancel-product-edit" class="btn btn-sm btn-outline-secondary" type="button" hidden>Annuler la modification</button>
+            </div>
+            <form id="product-form" class="row g-3">
+              <input id="product-id" name="id" type="hidden" />
+              <input id="product-image-url" name="image" type="hidden" />
+              <div class="col-md-6"><label class="form-label" for="product-name">Nom</label><input class="form-control" id="product-name" name="nom" required /></div>
+              <div class="col-md-6"><label class="form-label" for="product-reference">Référence</label><input class="form-control" id="product-reference" name="reference" required /></div>
+              <div class="col-12"><label class="form-label" for="product-description">Description</label><textarea class="form-control" id="product-description" name="description" rows="3"></textarea></div>
+              <div class="col-md-4"><label class="form-label" for="product-price">Prix (€)</label><input class="form-control" id="product-price" name="prix" type="number" min="0" step="0.01" required /></div>
+              <div class="col-md-4"><label class="form-label" for="product-stock">Stock</label><input class="form-control" id="product-stock" name="stock" type="number" min="0" step="1" required /></div>
+              <div class="col-md-4"><label class="form-label" for="product-stock-min">Seuil stock faible</label><input class="form-control" id="product-stock-min" name="stock_min" type="number" min="0" step="1" value="5" /></div>
+              <div class="col-md-6"><label class="form-label" for="product-category">Catégorie</label><input class="form-control" id="product-category" name="categorie" required /></div>
+              <div class="col-md-6"><label class="form-label" for="product-image-file">Image du produit</label><input class="form-control" id="product-image-file" name="image_file" type="file" accept="image/*" /><img id="product-image-preview" class="mt-2 rounded" alt="Aperçu de l’image produit" style="max-width: 140px; max-height: 100px; object-fit: cover;" hidden /></div>
+              <div class="col-12"><button id="save-product-button" class="btn btn-primary" type="submit">Enregistrer le produit</button></div>
+            </form>
+          </div>
+
+          <div class="admin-card p-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+              <h3 class="h5 mb-0">Produits enregistrés</h3>
+              <input id="admin-product-search" class="form-control" type="search" placeholder="Rechercher un produit…" aria-label="Rechercher un produit" style="max-width: 320px;" />
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover align-middle mb-0">
+                <thead><tr><th>Produit</th><th>Catégorie</th><th>Prix</th><th>Stock</th><th>Actions</th></tr></thead>
+                <tbody id="admin-products-table"><tr><td colspan="5" class="text-muted">Chargement des produits…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="admin-card p-4 mt-4">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-3">
+              <h3 class="h5 mb-0">Commandes clients</h3>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <button class="btn btn-sm btn-primary" type="button" data-order-filter="all">Tous</button>
+              <button class="btn btn-sm btn-outline-secondary" type="button" data-order-filter="En attente">En attente</button>
+              <button class="btn btn-sm btn-outline-secondary" type="button" data-order-filter="Préparation">Préparation</button>
+              <button class="btn btn-sm btn-outline-secondary" type="button" data-order-filter="Expédiée">Expédiée</button>
+              <button class="btn btn-sm btn-outline-secondary" type="button" data-order-filter="Terminée">Terminée</button>
+              <button class="btn btn-sm btn-outline-secondary" type="button" data-order-filter="Annulée">Annulée</button>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover align-middle mb-0">
+                <thead>
+                  <tr>
+                    <th>Numéro</th>
+                    <th>Client</th>
+                    <th>Date</th>
+                    <th>Montant</th>
+                    <th>Statut</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-orders-table">
+                  <tr><td colspan="5" class="text-muted">Chargement des commandes…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="dashboard-grid mb-4">
+            <div class="stat-card stat-card--red">
+              <div class="stat-card__icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+              <div class="stat-card__body">
+                <div class="stat-card__label">Nombre total de produits</div>
+                <div class="stat-card__value" id="dashboard-total-products">0</div>
+              </div>
+            </div>
+
+            <div class="stat-card stat-card--blue">
+              <div class="stat-card__icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+              <div class="stat-card__body">
+                <div class="stat-card__label">Nombre total de commandes</div>
+                <div class="stat-card__value" id="dashboard-total-orders">0</div>
+              </div>
+            </div>
+
+            <div class="stat-card stat-card--green">
+              <div class="stat-card__icon"><i class="fa-solid fa-users"></i></div>
+              <div class="stat-card__body">
+                <div class="stat-card__label">Nombre total de clients</div>
+                <div class="stat-card__value" id="dashboard-total-clients">0</div>
+              </div>
+            </div>
+
+            <div class="stat-card stat-card--orange">
+              <div class="stat-card__icon"><i class="fa-solid fa-calendar-day"></i></div>
+              <div class="stat-card__body">
+                <div class="stat-card__label">Commandes aujourd'hui</div>
+                <div class="stat-card__value" id="dashboard-orders-today">0</div>
+              </div>
+            </div>
+
+            <div class="stat-card stat-card--purple">
+              <div class="stat-card__icon"><i class="fa-solid fa-sack-dollar"></i></div>
+              <div class="stat-card__body">
+                <div class="stat-card__label">Chiffre d'affaires total</div>
+                <div class="stat-card__value" id="dashboard-revenue-total">0,00 €</div>
+              </div>
+            </div>
+
+            <div class="stat-card stat-card--dark">
+              <div class="stat-card__icon"><i class="fa-solid fa-chart-line"></i></div>
+              <div class="stat-card__body">
+                <div class="stat-card__label">Chiffre d'affaires du mois</div>
+                <div class="stat-card__value" id="dashboard-revenue-month">0,00 €</div>
+              </div>
+            </div>
+
+            <div class="stat-card stat-card--danger">
+              <div class="stat-card__icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+              <div class="stat-card__body">
+                <div class="stat-card__label">Produits en rupture</div>
+                <div class="stat-card__value" id="dashboard-products-out">0</div>
+              </div>
+            </div>
+
+            <div class="stat-card stat-card--warning">
+              <div class="stat-card__icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+              <div class="stat-card__body">
+                <div class="stat-card__label">Produits en stock faible</div>
+                <div class="stat-card__value" id="dashboard-products-low">0</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-panels mb-4">
+            <div class="dashboard-panel">
+              <div class="dashboard-panel__header">
+                <h3>5 dernières commandes</h3>
+              </div>
+              <div id="dashboard-last-orders" class="dashboard-list"></div>
+            </div>
+
+            <div class="dashboard-panel">
+              <div class="dashboard-panel__header">
+                <h3>5 produits les plus vendus</h3>
+              </div>
+              <div id="dashboard-top-products" class="dashboard-list"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid"><div><div class="footer-brand"><span class="footer-logo"><i class="fa-solid fa-car-side"></i></span><span style="font-weight:800;">MCA PIÈCES AUTOS 38</span></div><p>Votre spécialiste de la pièce automobile pour particuliers et professionnels.</p><div class="social-links"><a href="https://www.facebook.com/people/MCA-Pi%C3%A8ces-autos-38/61590594564090/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="tel:0451263555"><i class="fa-solid fa-phone"></i></a></div></div><div><h4>Navigation</h4><ul><li><a href="index.html">Accueil</a></li><li><a href="catalogue.html">Catalogue</a></li><li><a href="services.html">Services</a></li><li><a href="galerie.html">Galerie</a></li></ul></div><div><h4>Services</h4><ul><li>Recherche pièces</li><li>Conseils techniques</li><li>Livraison rapide</li><li>Click & Collect</li></ul></div><div><h4>Contact</h4><ul><li>372 Route du Barrage</li><li>38121 Reventin-Vaugris</li><li>04 51 26 35 55</li><li>contact@mcapiecesautos38.fr</li></ul></div></div>
+      <div class="copyright">© <span id="year"></span> MCA Pièces Autos 38 — Tous droits réservés.</div>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-config.js"></script>
+    <script src="assets/js/supabase.js"></script>
+    <script src="assets/js/admin.js"></script>
+    <script src="assets/js/auth-nav.js"></script>
+  </body>
+</html>

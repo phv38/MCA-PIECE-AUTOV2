@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MCA Pièces Autos 38 | Pièces automobiles à Reventin-Vaugris</title>
+    <meta
+      name="description"
+      content="MCA Pièces Autos 38, spécialiste de la pièce automobile à Reventin-Vaugris. Large gamme de références, conseils techniques et commande rapide pour particuliers et professionnels."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #d20d1b;
+        --primary-dark: #a30814;
+        --black: #111111;
+        --white: #ffffff;
+        --light: #f5f5f5;
+        --muted: #6f6f6f;
+        --dark: #2b2b2b;
+        --shadow: 0 18px 45px rgba(17, 17, 17, 0.12);
+        --radius: 22px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--white);
+        color: var(--black);
+        line-height: 1.7;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .section-title {
+        font-size: clamp(1.9rem, 3vw, 3rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
+        line-height: 1.15;
+      }
+
+      .section-subtitle {
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 700px;
+      }
+
+      .btn-primary-custom {
+        background: var(--primary);
+        border-color: var(--primary);
+        border-radius: 999px;
+        padding: 0.9rem 1.7rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        transition: all 0.25s ease;
+      }
+
+      .btn-primary-custom:hover {
+        background: var(--primary-dark);
+        border-color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .btn-outline-custom {
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        color: var(--white);
+        background: transparent;
+        border-radius: 999px;
+        padding: 0.9rem 1.7rem;
+        font-weight: 600;
+      }
+
+      .btn-outline-custom:hover {
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--white);
+      }
+
+      .topbar {
+        background: rgba(17, 17, 17, 0.96);
+        color: var(--white);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.7rem 0;
+        font-size: 0.9rem;
+      }
+
+      .topbar .contact-inline {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+
+      .topbar a {
+        color: var(--white);
+        opacity: 0.9;
+      }
+
+      .topbar a:hover {
+        opacity: 1;
+      }
+
+      .navbar {
+        background: rgba(17, 17, 17, 0.92);
+        backdrop-filter: blur(12px);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .navbar .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-weight: 800;
+        color: var(--white);
+        letter-spacing: 0.04em;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--primary) 0%, #ff7a7a 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 24px rgba(210, 13, 27, 0.35);
+      }
+
+      .brand-mark i {
+        color: var(--white);
+        font-size: 1.1rem;
+      }
+
+      .nav-link {
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-weight: 500;
+        transition: all 0.2s ease;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--white) !important;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+
+      .cart-pill {
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        color: var(--white);
+        padding: 0.7rem 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-weight: 600;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 760px;
+        display: flex;
+        align-items: center;
+        background:
+          linear-gradient(90deg, rgba(17, 17, 17, 0.82) 0%, rgba(17, 17, 17, 0.55) 38%, rgba(17, 17, 17, 0.22) 100%),
+          url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      }
+
+      .hero-content {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .hero h1 {
+        color: var(--white);
+        font-weight: 900;
+        font-size: clamp(2.8rem, 5vw, 5rem);
+        line-height: 0.96;
+        margin: 1rem 0 1.2rem;
+        letter-spacing: -0.045em;
+      }
+
+      .hero p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.17rem;
+        max-width: 700px;
+        margin-bottom: 2rem;
+      }
+
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .hero-card {
+        margin-top: 2.5rem;
+        background: rgba(17, 17, 17, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        color: var(--white);
+        border-radius: var(--radius);
+        padding: 1.4rem 1.2rem;
+        box-shadow: var(--shadow);
+        max-width: 420px;
+      }
+
+      .hero-card .label {
+        color: rgba(255, 255, 255, 0.72);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.74rem;
+        font-weight: 700;
+      }
+
+      .hero-card strong {
+        display: block;
+        font-size: 1.3rem;
+        margin: 0.4rem 0 0.2rem;
+      }
+
+      .hero-card .meta {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.92rem;
+      }
+
+      .section-pad {
+        padding: 6rem 0;
+      }
+
+      .presentation {
+        background: var(--light);
+      }
+
+      .presentation-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 2rem;
+      }
+
+      .presentation-card p {
+        color: var(--muted);
+        margin-bottom: 1.3rem;
+      }
+
+      .info-box {
+        background: var(--black);
+        border-radius: var(--radius);
+        color: var(--white);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+      }
+
+      .info-box h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1.15rem;
+      }
+
+      .info-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .info-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      }
+
+      .info-list li:last-child {
+        border-bottom: none;
+      }
+
+      .info-list i {
+        width: 38px;
+        height: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(210, 13, 27, 0.14);
+        color: #ff8a8f;
+        border-radius: 50%;
+      }
+
+      .features-grid,
+      .product-grid,
+      .gallery-grid {
+        display: grid;
+        gap: 2rem;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .feature-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: 2rem 1.5rem;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(17, 17, 17, 0.04);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 22px 48px rgba(17, 17, 17, 0.12);
+      }
+
+      .feature-icon {
+        width: 68px;
+        height: 68px;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(210, 13, 27, 0.12), rgba(210, 13, 27, 0.02));
+        color: var(--primary);
+        font-size: 1.8rem;
+        margin-bottom: 1.4rem;
+      }
+
+      .feature-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .feature-card p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .stats {
+        background: var(--black);
+        color: var(--white);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+      }
+
+      .stat-box {
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      .stat-box .value {
+        font-size: clamp(2.1rem, 4vw, 3rem);
+        font-weight: 900;
+        color: var(--white);
+        line-height: 1;
+      }
+
+      .stat-box .label {
+        color: rgba(255, 255, 255, 0.8);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-size: 0.78rem;
+        margin-top: 0.75rem;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .product-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(17, 17, 17, 0.05);
+      }
+
+      .product-card img {
+        height: 220px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .product-body {
+        padding: 1.4rem 1.3rem 1.5rem;
+      }
+
+      .product-tag {
+        display: inline-flex;
+        margin-bottom: 0.65rem;
+        padding: 0.35rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(210, 13, 27, 0.08);
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 0.78rem;
+      }
+
+      .product-body h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .product-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        color: var(--muted);
+        font-size: 0.88rem;
+        margin-bottom: 0.85rem;
+      }
+
+      .product-price {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 1rem;
+      }
+
+      .price {
+        font-size: 1.55rem;
+        font-weight: 800;
+        color: var(--black);
+      }
+
+      .price small {
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .fb-section {
+        background: linear-gradient(135deg, rgba(17, 17, 17, 0.96), rgba(30, 30, 30, 0.96));
+        color: var(--white);
+      }
+
+      .fb-box {
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 2.2rem;
+      }
+
+      .fb-box .icon {
+        width: 70px;
+        height: 70px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(59, 130, 246, 0.14);
+        color: #6fa6ff;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        min-height: 250px;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.35s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.08);
+      }
+
+      .gallery-item::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(17, 17, 17, 0) 40%, rgba(17, 17, 17, 0.55) 100%);
+      }
+
+      .gallery-caption {
+        position: absolute;
+        left: 1.3rem;
+        bottom: 1.2rem;
+        z-index: 2;
+        color: var(--white);
+        font-weight: 700;
+      }
+
+      .cta-strip {
+        background: linear-gradient(135deg, var(--primary) 0%, #a30814 100%);
+        color: var(--white);
+      }
+
+      .cta-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.5rem 0;
+      }
+
+      .cta-inner h3 {
+        font-size: clamp(1.5rem, 2vw, 2.2rem);
+        margin: 0;
+        font-weight: 800;
+      }
+
+      footer {
+        background: var(--black);
+        color: var(--white);
+        padding-top: 4rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
+        gap: 2rem;
+        padding-bottom: 2.5rem;
+      }
+
+      .footer-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer-logo {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--primary) 0%, #ff8a8f 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .footer p,
+      .footer li,
+      .footer a {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .footer h4 {
+        font-size: 1.08rem;
+        margin-bottom: 1rem;
+        color: var(--white);
+      }
+
+      .footer ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .footer li {
+        margin-bottom: 0.6rem;
+      }
+
+      .socials {
+        display: flex;
+        gap: 0.8rem;
+        margin-top: 1.4rem;
+      }
+
+      .socials a {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.25rem 0;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 992px) {
+        .features-grid,
+        .product-grid,
+        .gallery-grid,
+        .stats-grid,
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .hero {
+          min-height: 640px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .topbar-inner,
+        .cta-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .features-grid,
+        .product-grid,
+        .gallery-grid,
+        .stats-grid,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .navbar-collapse {
+          padding-bottom: 1rem;
+        }
+
+        .nav-actions {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="container">
+        <div class="topbar-inner">
+          <div class="contact-inline">
+            <span><i class="fa-solid fa-location-dot"></i> 372 Route du Barrage, 38121 Reventin-Vaugris</span>
+            <a href="tel:0451263555"><i class="fa-solid fa-phone"></i> 04 51 26 35 55</a>
+          </div>
+          <a href="https://www.facebook.com/people/MCA-Pi%C3%A8ces-autos-38/61590594564090/" target="_blank" rel="noopener">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#accueil" aria-label="MCA Pièces Autos 38">
+          <span class="brand-mark"><i class="fa-solid fa-car-side"></i></span>
+          <span>MCA PIÈCES AUTOS 38</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMain"
+          aria-controls="navbarMain"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-2">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link" href="catalogue.html">Catalogue</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#galerie">Galerie</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="panier.html">Panier</a></li>
+            <li class="nav-item"><a class="nav-link" href="connexion.html">Connexion</a></li>
+          </ul>
+          <div class="nav-actions">
+            <a href="panier.html" class="cart-pill"><i class="fa-solid fa-bag-shopping"></i> Panier</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <header id="accueil" class="hero">
+      <div class="container hero-content">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <span class="hero-badge"><i class="fa-solid fa-circle-check"></i> Spécialiste de la pièce automobile</span>
+            <h1>MCA PIÈCES AUTOS 38</h1>
+            <p>
+              Votre spécialiste de la pièce automobile à Reventin-Vaugris, avec des conseils techniques
+              pointus, des références fiables et un service rapide pour particuliers et professionnels.
+            </p>
+            <div class="hero-actions">
+              <a href="catalogue.html" class="btn btn-primary-custom btn-lg">Voir le catalogue</a>
+              <a href="#contact" class="btn btn-outline-custom btn-lg">Nous contacter</a>
+            </div>
+            <div class="hero-card">
+              <div class="label">Service de confiance</div>
+              <strong>Recherche et conseil sur mesure</strong>
+              <div class="meta">Pièces automobiles, qualité et disponibilité rapide.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section-pad presentation">
+        <div class="container">
+          <div class="row g-4 align-items-center">
+            <div class="col-lg-7">
+              <div class="presentation-card">
+                <span class="hero-badge" style="background: rgba(210, 13, 27, 0.08); border-color: rgba(210, 13, 27, 0.12); color: var(--primary);">Présentation</span>
+                <h2 class="section-title mt-3">Un accompagnement fiable pour chaque véhicule</h2>
+                <p>
+                  MCA Pièces Autos 38 accompagne particuliers et professionnels dans la recherche de pièces automobiles
+                  de qualité. Nous mettons notre expertise au service de chaque demande pour vous proposer les références
+                  adaptées à votre voiture, à votre budget et à vos besoins techniques.
+                </p>
+                <p>
+                  Que vous soyez à la recherche d’un simple accessoire, d’un élément de sécurité ou d’une pièce plus spécifique,
+                  notre équipe vous guide avec sérieux et réactivité afin de vous aider à trouver la bonne solution rapidement.
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="info-box">
+                <h3>Contact & informations</h3>
+                <ul class="info-list">
+                  <li>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>372 Route du Barrage, 38121 Reventin-Vaugris</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-phone"></i>
+                    <span>04 51 26 35 55</span>
+                  </li>
+                  <li>
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>Facebook officiel</span>
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-clock"></i>
+                    <span>Horaire adapté au besoin client</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section-pad">
+        <div class="container">
+          <div class="text-center mb-5">
+            <span class="hero-badge" style="background: rgba(210, 13, 27, 0.08); border-color: rgba(210, 13, 27, 0.12); color: var(--primary);">Nos avantages</span>
+            <h2 class="section-title mt-3">Une expertise conçue pour simplifier votre achat</h2>
+          </div>
+          <div class="features-grid">
+            <article class="feature-card">
+              <div class="feature-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+              <h3>Pièces automobiles</h3>
+              <p>Large gamme de références pour répondre à de nombreux besoins de maintenance et de réparation.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon"><i class="fa-solid fa-user-gear"></i></div>
+              <h3>Conseils techniques</h3>
+              <p>Une expertise professionnelle pour vous orienter vers la pièce compatible et adaptée à votre véhicule.</p>
+            </article>
+            <article class="feature-card">
+              <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+              <h3>Commande rapide</h3>
+              <p>Disponibilité rapide et gestion efficace pour obtenir votre commande dans les meilleurs délais.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats section-pad">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="value">1000+</div>
+              <div class="label">Références</div>
+            </div>
+            <div class="stat-box">
+              <div class="value">100%</div>
+              <div class="label">Conseils personnalisés</div>
+            </div>
+            <div class="stat-box">
+              <div class="value">Pro</div>
+              <div class="label">Particuliers & professionnels</div>
+            </div>
+            <div class="stat-box">
+              <div class="value">24h</div>
+              <div class="label">Réactivité</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="catalogue" class="section-pad">
+        <div class="container">
+          <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 mb-5">
+            <div>
+              <span class="hero-badge" style="background: rgba(210, 13, 27, 0.08); border-color: rgba(210, 13, 27, 0.12); color: var(--primary);">Catalogue</span>
+              <h2 class="section-title mt-3 mb-0">Quelques références phares</h2>
+            </div>
+            <a href="catalogue.html" class="btn btn-primary-custom">Découvrir plus</a>
+          </div>
+          <div class="product-grid">
+            <article class="product-card">
+              <img src="https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=900&q=80" alt="Plaquettes de frein" />
+              <div class="product-body">
+                <span class="product-tag">Freinage</span>
+                <h3>Plaquettes de frein</h3>
+                <div class="product-meta">
+                  <span>Réf. 204F-88</span>
+                  <span>En stock</span>
+                </div>
+                <div class="product-price">
+                  <div class="price">49,90€</div>
+                  <button class="btn btn-primary-custom">Ajouter</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=80" alt="Amortisseurs" />
+              <div class="product-body">
+                <span class="product-tag">Suspension</span>
+                <h3>Amortisseurs avant</h3>
+                <div class="product-meta">
+                  <span>Réf. SUSP-440</span>
+                  <span>En stock</span>
+                </div>
+                <div class="product-price">
+                  <div class="price">89,00€</div>
+                  <button class="btn btn-primary-custom">Ajouter</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80" alt="Batterie auto" />
+              <div class="product-body">
+                <span class="product-tag">Électricité</span>
+                <h3>Batterie 12V</h3>
+                <div class="product-meta">
+                  <span>Réf. BAT-72A</span>
+                  <span>Dispo</span>
+                </div>
+                <div class="product-price">
+                  <div class="price">129,00€</div>
+                  <button class="btn btn-primary-custom">Ajouter</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="galerie" class="section-pad" style="background: var(--light);">
+        <div class="container">
+          <div class="text-center mb-5">
+            <span class="hero-badge" style="background: rgba(210, 13, 27, 0.08); border-color: rgba(210, 13, 27, 0.12); color: var(--primary);">Galerie</span>
+            <h2 class="section-title mt-3">Notre univers automobile</h2>
+          </div>
+          <div class="gallery-grid">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=900&q=80" alt="Magasin MCA Pièces Autos 38" />
+              <div class="gallery-caption">Magasin</div>
+            </div>
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1593941707882-a5bac6861d75?auto=format&fit=crop&w=900&q=80" alt="Pièces automobiles" />
+              <div class="gallery-caption">Pièces</div>
+            </div>
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=80" alt="Atelier et mécanique" />
+              <div class="gallery-caption">Atelier</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="fb-section section-pad">
+        <div class="container">
+          <div class="fb-box text-center">
+            <div class="icon"><i class="fa-brands fa-facebook-f"></i></div>
+            <h2 class="section-title text-white mb-3">Suivez-nous sur Facebook</h2>
+            <p class="section-subtitle mx-auto text-white-50 mb-4">
+              Retrouver nos actualités, nouveautés et astuces sur notre page Facebook officielle.
+            </p>
+            <a href="https://www.facebook.com/people/MCA-Pi%C3%A8ces-autos-38/61590594564090/" target="_blank" rel="noopener" class="btn btn-primary-custom btn-lg">
+              Voir la page Facebook
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section-pad">
+        <div class="container">
+          <div class="row g-4 align-items-start">
+            <div class="col-lg-5">
+              <span class="hero-badge" style="background: rgba(210, 13, 27, 0.08); border-color: rgba(210, 13, 27, 0.12); color: var(--primary);">Contact</span>
+              <h2 class="section-title mt-3">Contactez-nous</h2>
+              <div class="info-box" style="margin-top: 1.5rem;">
+                <h3>Coordonnées</h3>
+                <ul class="info-list">
+                  <li><i class="fa-solid fa-location-dot"></i><span>372 Route du Barrage, 38121 Reventin-Vaugris</span></li>
+                  <li><i class="fa-solid fa-phone"></i><span>04 51 26 35 55</span></li>
+                  <li><i class="fa-solid fa-envelope"></i><span>contact@mcapiecesautos38.fr</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="presentation-card">
+                <form>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">Nom</label>
+                      <input type="text" class="form-control form-control-lg" placeholder="Votre nom" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Prénom</label>
+                      <input type="text" class="form-control form-control-lg" placeholder="Votre prénom" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Téléphone</label>
+                      <input type="tel" class="form-control form-control-lg" placeholder="Votre téléphone" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Email</label>
+                      <input type="email" class="form-control form-control-lg" placeholder="Votre email" />
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label">Message</label>
+                      <textarea class="form-control form-control-lg" rows="5" placeholder="Décrivez votre besoin..."></textarea>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary-custom btn-lg">Envoyer</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-pad" style="background: var(--light);">
+        <div class="container">
+          <div class="d-flex justify-content-center mb-4">
+            <span class="hero-badge" style="background: rgba(210, 13, 27, 0.08); border-color: rgba(210, 13, 27, 0.12); color: var(--primary);">Horaires</span>
+          </div>
+          <div class="row g-3 justify-content-center">
+            <div class="col-md-6 col-lg-4">
+              <div class="presentation-card h-100">
+                <h3>Lundi</h3>
+                <p>08:00 - 12:00<br>13:30 - 18:00</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="presentation-card h-100">
+                <h3>Mardi</h3>
+                <p>08:00 - 12:00</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="presentation-card h-100">
+                <h3>Mercredi</h3>
+                <p>08:00 - 12:00<br>13:30 - 18:00</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="presentation-card h-100">
+                <h3>Jeudi</h3>
+                <p>08:00 - 12:00<br>13:30 - 18:00</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="presentation-card h-100">
+                <h3>Vendredi</h3>
+                <p>08:00 - 12:00<br>13:30 - 18:00</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="presentation-card h-100">
+                <h3>Samedi / Dimanche</h3>
+                <p>Fermé</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-strip">
+        <div class="container">
+          <div class="cta-inner">
+            <h3>Besoin d’une pièce ou d’un conseil technique ?</h3>
+            <a href="#contact" class="btn btn-light btn-lg rounded-pill fw-bold">Nous appeler</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">
+              <span class="footer-logo"><i class="fa-solid fa-car-side"></i></span>
+              <span style="font-weight: 800; letter-spacing: 0.04em;">MCA PIÈCES AUTOS 38</span>
+            </div>
+            <p>
+              Votre spécialiste de la pièce automobile à Reventin-Vaugris, avec un accompagnement de qualité pour particuliers et professionnels.
+            </p>
+            <div class="socials">
+              <a href="https://www.facebook.com/people/MCA-Pi%C3%A8ces-autos-38/61590594564090/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="tel:0451263555"><i class="fa-solid fa-phone"></i></a>
+            </div>
+          </div>
+
+          <div>
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="catalogue.html">Catalogue</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#galerie">Galerie</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Services</h4>
+            <ul>
+              <li>Recherche de pièces</li>
+              <li>Conseils techniques</li>
+              <li>Commande rapide</li>
+              <li>Click & Collect</li>
+              <li>Professionnels</li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Contact</h4>
+            <ul>
+              <li>372 Route du Barrage</li>
+              <li>38121 Reventin-Vaugris</li>
+              <li>04 51 26 35 55</li>
+              <li>contact@mcapiecesautos38.fr</li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright text-center">
+          © <span id="year"></span> MCA Pièces Autos 38 — Tous droits réservés.
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-config.js"></script>
+    <script src="assets/js/supabase.js"></script>
+    <script src="assets/js/auth-nav.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
