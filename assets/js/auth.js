@@ -339,6 +339,7 @@ async function renderOrdersForAccount() {
           </div>
 
           <div class="order-card__footer">
+            <button type="button" class="btn btn-light btn-small" data-download-invoice="${encodeURIComponent(order.id)}">Télécharger la facture</button>
             <a href="detail-commande.html?id=${encodeURIComponent(order.id)}" class="btn btn-primary btn-small">Voir la commande</a>
           </div>
         </article>
@@ -474,6 +475,7 @@ async function renderOrderDetailPage() {
         </div>
 
         <div class="order-detail-actions">
+          <button type="button" class="btn btn-light" data-download-invoice="${encodeURIComponent(order.id)}">Télécharger la facture</button>
           <a href="compte.html" class="btn btn-primary">Retour au compte</a>
         </div>
       </div>

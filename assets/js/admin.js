@@ -752,11 +752,14 @@ function renderAdminOrdersList(orders = adminOrdersCache) {
         <td>${date}</td>
         <td>${total}</td>
         <td>
-          <select class="form-select form-select-sm" data-order-status-select="${order.id}" aria-label="Changer le statut de la commande">
-            ${ADMIN_ORDER_STATUSES.map((value) => `
-              <option value="${value}" ${value === status ? 'selected' : ''}>${value}</option>
-            `).join('')}
-          </select>
+          <div class="d-grid gap-2">
+            <select class="form-select form-select-sm" data-order-status-select="${order.id}" aria-label="Changer le statut de la commande">
+              ${ADMIN_ORDER_STATUSES.map((value) => `
+                <option value="${value}" ${value === status ? 'selected' : ''}>${value}</option>
+              `).join('')}
+            </select>
+            <button class="btn btn-sm btn-outline-dark" type="button" data-download-invoice="${order.id}" data-invoice-admin="1">Télécharger la facture</button>
+          </div>
         </td>
       </tr>
     `;

@@ -587,6 +587,8 @@ textarea { min-height: 140px; resize: vertical; }
   margin-top: 1.5rem;
   display: flex;
   justify-content: flex-end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .btn-small {

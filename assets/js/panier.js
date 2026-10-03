@@ -426,6 +426,23 @@ async function saveOrder({ userId, total, statut = 'En attente' }) {
   return createOrder({ userId, total, statut });
 }
 
+async function triggerOrderEmails(orderId) {
+  if (!orderId || !window.supabaseClient?.functions?.invoke) return null;
+
+  console.log('[emails] send-order-email called', { orderId });
+  const { data, error } = await window.supabaseClient.functions.invoke('send-order-email', {
+    body: { orderId }
+  });
+
+  console.log('[emails] send-order-email response', { data, error });
+
+  if (error) {
+    throw normalizeOrderError(error);
+  }
+
+  return data;
+}
+
 async function submitOrder(cartItems = [], userId = null) {
   const safeItems = Array.isArray(cartItems) ? cartItems : [];
   const activeUserId = userId || (await getCurrentUserForCheckout()).data?.user?.id;
@@ -470,6 +487,18 @@ async function submitOrder(cartItems = [], userId = null) {
   }
 
   await decrementProductStockFromCart(safeItems);
+
+  try {
+    await window.mcaInvoices?.ensureInvoiceForOrderId?.(order.id);
+  } catch (invoiceError) {
+    console.error('[invoice] automatic generation failed after submitOrder', invoiceError);
+  }
+
+  try {
+    await triggerOrderEmails(order.id);
+  } catch (emailError) {
+    console.error('[emails] automatic sending failed after submitOrder', emailError);
+  }
 
   return { order, items: data || details };
 }
@@ -589,6 +618,18 @@ async function validateOrder(cartItems = [], userId = null) {
     }
 
     await decrementProductStockFromCart(panier);
+
+    try {
+      await window.mcaInvoices?.ensureInvoiceForOrderId?.(commande.id);
+    } catch (invoiceError) {
+      console.error('[invoice] automatic generation failed after validateOrder', invoiceError);
+    }
+
+    try {
+      await triggerOrderEmails(commande.id);
+    } catch (emailError) {
+      console.error('[emails] automatic sending failed after validateOrder', emailError);
+    }
 
     viderPanier();
     window.location.href = `confirmation.html?order_id=${encodeURIComponent(commande.id)}`;
