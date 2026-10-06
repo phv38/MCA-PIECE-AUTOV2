@@ -214,9 +214,9 @@ function renderPanier() {
             <div class="cart-item-title">${nom}</div>
             <div class="cart-item-price">${formatPrix(item.prix)} / unité</div>
             <div class="qty-controls">
-              <button class="btn btn-outline-secondary btn-sm" data-action="minus" data-id="${id}" type="button" aria-label="Diminuer la quantité">−</button>
+              <button class="qty-btn" data-action="minus" data-id="${id}" type="button" aria-label="Diminuer la quantité" ${item.quantite <= 1 ? 'disabled' : ''}>−</button>
               <span class="qty-value">${item.quantite}</span>
-              <button class="btn btn-outline-secondary btn-sm" data-action="plus" data-id="${id}" type="button" aria-label="Augmenter la quantité">+</button>
+              <button class="qty-btn" data-action="plus" data-id="${id}" type="button" aria-label="Augmenter la quantité">+</button>
             </div>
           </div>
           <div class="text-md-end ms-md-auto">
@@ -238,7 +238,8 @@ function renderPanier() {
       const action = button.dataset.action;
       const currentItem = panier.find((item) => String(item.id) === String(id));
       if (!currentItem) return;
-      const nextQty = action === 'plus' ? currentItem.quantite + 1 : currentItem.quantite - 1;
+      const nextQty = action === 'plus' ? currentItem.quantite + 1 : Math.max(1, currentItem.quantite - 1);
+      if (nextQty === currentItem.quantite) return;
       modifierQuantite(id, nextQty);
     });
   });
